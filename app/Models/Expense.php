@@ -9,7 +9,9 @@ class Expense extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'description', 'type', 'amount'];
+    protected $fillable = ['user_id', 'description', 'type', 'amount', 'photo', 'expense_date'];
+
+    protected $dates = ['expense_date'];
 
     // ACESSOR
     public function getAmountAttribute()
@@ -21,6 +23,11 @@ class Expense extends Model
     public function setAmountAttribute($prop)
     {
         return $this->attributes['amount'] = $prop * 100;
+    }
+    
+    public function setExpenseDateAttribute($prop)
+    {
+        return $this->attributes['expense_date'] = (\DateTime::createFromFormat('d/m/Y H:i:s', $prop))->format('Y-m-d H:i:s');
     }
 
     public function user()

@@ -45,6 +45,30 @@
             @enderror
             </p>
 
+            <p class="w-full px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Comprovante</label>
+                <input type="file" name="photo" wire:model="photo"
+                class="block appearance-none w-full bg-gray-200 border @error('photo') border-red-500 @else border-gray-200 @enderror  text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                
+                @if($photo)
+                    <img src="{{$photo->temporaryUrl()}}" alt="Meu comprovante" width="150px" class="my-3">
+                @endif
+
+            @error('photo')
+                <h5 class="text-red-500 text-xs italic">{{$message}}</h5>
+            @enderror
+            </p>
+
+            <p class="w-full px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Data</label>
+                <input type="text" name="expense_date" wire:model="expenseDate"
+                class="block appearance-none w-full bg-gray-200 border @error('expense_date') border-red-500 @else border-gray-200 @enderror  text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+
+            @error('expense_date')
+                <h5 class="text-red-500 text-xs italic">{{$message}}</h5>
+            @enderror
+            </p>
+
         </div>
         <div class="w-full py-4 px-3 mb-6 md:mb-0">
 
